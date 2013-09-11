@@ -22,12 +22,15 @@ describe('Bernie Mills REST Api', function() {
         .expect(201)
         .expect('Content-Type', /json/)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             // store the resulting ID so we can use it later in testing
             testData._id = res.body._id;
             done();
+
         });
     });
 
@@ -40,10 +43,13 @@ describe('Bernie Mills REST Api', function() {
         })
         .expect(400)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             done();
+
         });
     });
 
@@ -52,17 +58,23 @@ describe('Bernie Mills REST Api', function() {
         .expect(200)
         .expect('Content-Type', /json/)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             res.body.should.have.property('bernietext');
             res.body.bernietext.should.equal(testData.bernietext);
+
             res.body.should.have.property('realtext');
             res.body.realtext.should.equal(testData.realtext);
+
             res.body.should.have.property('description');
             res.body.description.should.equal(testData.description);
+
             res.body.should.have.property('_id');
             res.body._id.should.equal(testData._id);
+
             done();
         });
     });
@@ -71,9 +83,11 @@ describe('Bernie Mills REST Api', function() {
         api.get('/' + testData._id + '123')
         .expect(404)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             done();
         });
     });
@@ -84,9 +98,11 @@ describe('Bernie Mills REST Api', function() {
         .send(updateData)
         .expect(403)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             done();
         })
     });
@@ -96,9 +112,11 @@ describe('Bernie Mills REST Api', function() {
         .send(updateData)
         .expect(403)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             done();
         })
     });
@@ -109,10 +127,11 @@ describe('Bernie Mills REST Api', function() {
         .send(updateData)
         .expect(204)
         .end(function (err, res) {
-            console.log('test');
+
             if (err) {
                 return done(err);
             }
+
             done();
         })
     });
@@ -128,8 +147,6 @@ describe('Bernie Mills REST Api', function() {
             res.body.should.be.a('array');
 
             var record = res.body.pop();
-
-            console.log(record);
 
             record.should.have.property('bernietext');
             record.bernietext.should.equal(updateData.bernietext);
@@ -152,9 +169,11 @@ describe('Bernie Mills REST Api', function() {
         .set('x-api-key', 'not-the-right-key')
         .expect(403)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             done();
         });
     });
@@ -163,9 +182,11 @@ describe('Bernie Mills REST Api', function() {
         api.del('/' + testData._id)
         .expect(403)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             done();
         });
     });
@@ -175,9 +196,11 @@ describe('Bernie Mills REST Api', function() {
         .set('x-api-key', inc.apiKey)
         .expect(204)
         .end(function (err, res) {
+
             if (err) {
                 return done(err);
             }
+
             done();
         });
     });
