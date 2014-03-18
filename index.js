@@ -23,6 +23,7 @@ function validateBernie (json) {
     }
 
     return true;
+    
 }
 
 function validateApiKey (key) {
@@ -128,6 +129,13 @@ app.get('/', function (req, res) {
         res.json(docs);
 
     });
+});
+
+app.options('/', function(req, res){
+  
+  res.header("Access-Control-Allow-Origin", "*");
+  res.end('');
+
 });
 
 // UPDATE a bernie mills
