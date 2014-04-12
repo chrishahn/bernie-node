@@ -150,14 +150,5 @@ app.get('/', function (req, res) {
     });
 });
 
-// app.options('/', function(req, res){
-  
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.end('');
-
-// });
-
-// UPDATE a bernie mills
-
-app.listen(3000);
-console.log("Listening on port 3000...");
+app.listen(inc.listenPort);
+console.log("Listening on port " + inc.listenPort + "...");

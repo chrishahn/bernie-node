@@ -1,6 +1,7 @@
-var should = require('chai').should(),
+var inc = require('../include.js'),
+    should = require('chai').should(),
     supertest = require('supertest'),
-    api = supertest('http://localhost:3000'),
+    api = supertest('http://localhost:' + inc.listenPort),
     testData = {
         _id:            null,
         bernietext:     "This is a best ternie",
@@ -11,8 +12,7 @@ var should = require('chai').should(),
         bernietext:     "zzzzzzzz",
         realtext:       "zzzzzzzz",
         description:    "zzzzzzzz"
-    },
-    inc = require('../include.js');
+    };
 
 describe('Bernie Mills REST Api', function() {
 
