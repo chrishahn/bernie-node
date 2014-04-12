@@ -1,14 +1,15 @@
-var mongo   = require('mongodb'),
-    express = require('express'),
-    monk    = require('monk'),
-    db      = monk('localhost:27017/berniemills'),
-    app     = new express(),
-    coll    = db.get('bernies'),
-    inc     = require('./include.js');
+var mongo           = require('mongodb'),
+    express         = require('express'),
+    bodyParser      = require('body-parser'),
+    methodOverride  = require('method-override'),
+    monk            = require('monk'),
+    db              = monk('localhost:27017/berniemills'),
+    app             = new express(),
+    coll            = db.get('bernies'),
+    inc             = require('./include.js');
 
-// app.use(express.bodyParser());
-
-app.use(express.methodOverride());
+app.use(bodyParser());
+app.use(methodOverride());
  
 // ## CORS middleware
 //
