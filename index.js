@@ -4,7 +4,7 @@ var mongo           = require('mongodb'),
     methodOverride  = require('method-override'),
     monk            = require('monk'),
     db              = monk('localhost:27017/berniemills'),
-    app             = new express(),
+    app             = express(),
     coll            = db.get('bernies'),
     inc             = require('./include.js');
 
