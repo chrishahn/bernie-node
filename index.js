@@ -138,7 +138,7 @@ app.delete('/:id', function (req, res) {
 // RETRIEVE list of all bernie mills
 app.get('/', function (req, res) {
 
-    coll.find({}, function (e, docs) {
+    coll.find({sort: {_id: -1}}, function (e, docs) {
 
         if (e) {
             res.statusCode = 500;
